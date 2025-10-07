@@ -6,10 +6,22 @@ import { DB_NAME } from "./constants.js";
 import connectDB from "./db/index.js";
 
 dotenv.config({
-    path: './env'
+    path: "../.env"
 })
 
-connectDB();
+
+// connectDB() returns a promise and that's why we are using then catch
+connectDB()
+.then(()=>{
+    // If MongoDB connects successfully
+    app.listen(process.env.PORT || 8000,()=>{
+        console.log(`app is listening on port ${process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    // If MongoDB connection fails
+    console.log("Mongodb connection failed",err);
+})
 
 
 
