@@ -14,6 +14,7 @@ cloudinary.config({
                 resource_type:"auto"
             })
             console.log("cloudinary response",response.url);
+            fs.unlinkSync(localFilePath);
             return response;
         } catch (error) {
             fs.unlinkSync(localFilePath)
