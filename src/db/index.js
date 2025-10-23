@@ -13,4 +13,6 @@ const connectDB = async ()=>{
     }
 }
 
+//export default means that you can name it anything you like without using "as" while importing. 
+
 export default connectDB;
